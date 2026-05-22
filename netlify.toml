@@ -1,0 +1,94 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Interface en français
+locale: fr
+
+collections:
+  - name: "contenu"
+    label: "Contenu du site"
+    files:
+
+      - name: "hero"
+        label: "🏠 Page d'accueil — Hero"
+        file: "_data/hero.json"
+        fields:
+          - { label: "Titre principal (ligne 1)", name: "titre1", widget: "string", default: "Prends la barre." }
+          - { label: "Titre principal (ligne 2)", name: "titre2", widget: "string", default: "Apprends la mer." }
+          - { label: "Sous-titre accroche", name: "eyebrow", widget: "string", default: "Cours de voile & sorties en mer" }
+          - { label: "Texte d'introduction", name: "intro", widget: "text" }
+          - { label: "Photo principale (hero)", name: "photo_hero", widget: "image", hint: "Photo qui apparaît en fond à droite du titre. Format portrait recommandé." }
+
+      - name: "prestations"
+        label: "⛵ Prestations"
+        file: "_data/prestations.json"
+        fields:
+          - name: "stages"
+            label: "Stages de voile"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image", hint: "Format paysage, min. 800px de large." }
+          - name: "croisieres"
+            label: "Croisières à thème"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+          - name: "stages_pre"
+            label: "Stages pré-organisés"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+          - name: "cours_prive"
+            label: "Cours privés"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+
+      - name: "galerie"
+        label: "📸 Galerie photos"
+        file: "_data/galerie.json"
+        fields:
+          - name: "photos"
+            label: "Photos de la galerie"
+            widget: "list"
+            hint: "Tu peux ajouter, supprimer et réordonner les photos librement."
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Description (texte alternatif)", name: "alt", widget: "string", hint: "Décris brièvement la photo, ex: 'Voilier au coucher de soleil à Marseille'" }
+
+      - name: "contact"
+        label: "✉️ Informations de contact"
+        file: "_data/contact.json"
+        fields:
+          - { label: "Email de contact", name: "email", widget: "string" }
+          - { label: "Texte d'introduction du formulaire", name: "intro", widget: "text" }
+          - { label: "Message de confirmation (après envoi)", name: "confirmation", widget: "string", default: "Merci, je te réponds très vite !" }
+
+      - name: "stages_agenda"
+        label: "📅 Agenda des stages"
+        file: "_data/stages.json"
+        fields:
+          - name: "stages"
+            label: "Prochains stages"
+            widget: "list"
+            fields:
+              - { label: "Nom du stage", name: "nom", widget: "string" }
+              - { label: "Date(s)", name: "date", widget: "string", hint: "Ex: 12–19 juillet 2026" }
+              - { label: "Lieu", name: "lieu", widget: "string", hint: "Ex: Marseille, départ Vieux-Port" }
+              - { label: "Durée", name: "duree", widget: "string", hint: "Ex: 7 jours" }
+              - { label: "Nombre de places", name: "places", widget: "string", hint: "Ex: 4 places" }
+              - label: "Statut des places"
+                name: "statut"
+                widget: "select"
+                options:
+                  - { label: "Places disponibles", value: "open" }
+                  - { label: "Complet", value: "full" }
+                  - { label: "À venir", value: "soon" }
