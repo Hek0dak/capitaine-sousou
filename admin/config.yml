@@ -1,1 +1,117 @@
+backend:
+  name: git-gateway
+  branch: main
 
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+locale: fr
+
+collections:
+  - name: "contenu"
+    label: "Contenu du site"
+    files:
+
+      - name: "hero"
+        label: "🏠 Page d'accueil"
+        file: "_data/hero.json"
+        fields:
+          - { label: "Titre ligne 1", name: "titre1", widget: "string" }
+          - { label: "Titre ligne 2", name: "titre2", widget: "string" }
+          - { label: "Accroche", name: "eyebrow", widget: "string" }
+          - { label: "Description", name: "intro", widget: "text" }
+          - { label: "Photo principale", name: "photo_hero", widget: "image" }
+
+      - name: "prestations"
+        label: "⛵ Prestations"
+        file: "_data/prestations.json"
+        fields:
+          - name: "stages"
+            label: "Stages de voile"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+          - name: "croisieres"
+            label: "Croisières à thème"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+          - name: "stages_pre"
+            label: "Stages pré-organisés"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+          - name: "cours_prive"
+            label: "Cours privés"
+            widget: "object"
+            fields:
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+
+      - name: "galerie"
+        label: "📸 Galerie photos"
+        file: "_data/galerie.json"
+        fields:
+          - name: "photos"
+            label: "Photos"
+            widget: "list"
+            hint: "Ajoute, supprime et réordonne les photos librement."
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Description", name: "alt", widget: "string" }
+
+      - name: "stages_agenda"
+        label: "📅 Agenda des stages"
+        file: "_data/stages.json"
+        fields:
+          - name: "stages"
+            label: "Prochains stages"
+            widget: "list"
+            fields:
+              - { label: "Nom du stage", name: "nom", widget: "string" }
+              - { label: "Date(s)", name: "date", widget: "string" }
+              - { label: "Lieu", name: "lieu", widget: "string" }
+              - { label: "Durée", name: "duree", widget: "string" }
+              - { label: "Nombre de places", name: "places", widget: "string" }
+              - label: "Statut"
+                name: "statut"
+                widget: "select"
+                options:
+                  - { label: "Places disponibles", value: "open" }
+                  - { label: "Complet", value: "full" }
+                  - { label: "À venir", value: "soon" }
+
+      - name: "contact"
+        label: "✉️ Contact"
+        file: "_data/contact.json"
+        fields:
+          - { label: "Email de contact", name: "email", widget: "string" }
+          - { label: "Texte d'introduction", name: "intro", widget: "text" }
+
+      - name: "temoignages"
+        label: "⭐ Témoignages (section cachée)"
+        file: "_data/temoignages.json"
+        fields:
+          - { label: "Afficher sur le site ?", name: "visible", widget: "boolean", default: false }
+          - name: "temoignages"
+            label: "Témoignages"
+            widget: "list"
+            fields:
+              - { label: "Texte", name: "texte", widget: "text" }
+              - { label: "Auteur", name: "auteur", widget: "string" }
+              - { label: "Stage / contexte", name: "stage", widget: "string" }
+
+      - name: "faq"
+        label: "❓ FAQ (section cachée)"
+        file: "_data/faq.json"
+        fields:
+          - { label: "Afficher sur le site ?", name: "visible", widget: "boolean", default: false }
+          - name: "questions"
+            label: "Questions / Réponses"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Réponse", name: "reponse", widget: "text" }
