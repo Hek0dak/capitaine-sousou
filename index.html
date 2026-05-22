@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Capitaine Sousou — Solène Chevreuil</title>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Caveat:wght@400;600&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   /* ── VARIABLES ── */
@@ -478,55 +477,60 @@
     padding: 5rem 3rem;
   }
 
-  .section-intro {
-    font-size: 1rem;
-    color: var(--text-mid);
-    margin-bottom: 2.5rem;
-    max-width: 560px;
+  .niveaux-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
-  .niveaux-grid {
+  .niveau-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: 220px 1fr;
+    align-items: baseline;
     gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(42, 107, 138, 0.1);
   }
 
-  .niveau-card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 1.5rem 1.25rem;
-    border: 1px solid rgba(42, 107, 138, 0.12);
-    position: relative;
+  .niveau-row:last-child { border-bottom: none; }
+
+  .niveau-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .niveau-badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: var(--ocean-pale);
     color: var(--ocean-deep);
     font-family: var(--font-title);
     font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 0.8rem;
-    letter-spacing: 0.02em;
+    font-size: 0.85rem;
+    flex-shrink: 0;
   }
 
   .niveau-title {
     font-family: var(--font-title);
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--ocean-deep);
-    margin-bottom: 0.5rem;
   }
 
   .niveau-desc {
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     color: var(--text-mid);
     line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .niveau-row { grid-template-columns: 1fr; gap: 0.4rem; }
   }
 
   /* ── GALERIE ── */
@@ -616,6 +620,120 @@
   .badge-closed { background: #f0f0f0; color: #999; border: 1px solid #ddd; }
 
   .stages-photo { display: flex; flex-direction: column; gap: 12px; }
+
+  /* ── SECTIONS CACHÉES (témoignages + FAQ) ── */
+  .section-hidden { display: none; }
+  .section-hidden.visible { display: block; }
+
+  /* Témoignages */
+  .temoignages { background: var(--violet-pale); padding: 5rem 3rem; }
+
+  .temoignages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .temoignage-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 1.4rem;
+    border: 1px solid rgba(138, 101, 160, 0.12);
+    position: relative;
+  }
+
+  .temoignage-quote {
+    font-family: var(--font-title);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+
+  .temoignage-quote::before {
+    content: '\201C';
+    font-size: 2.5rem;
+    color: var(--violet-light);
+    line-height: 0;
+    vertical-align: -0.6rem;
+    margin-right: 4px;
+  }
+
+  .temoignage-author {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--violet);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .temoignage-stage {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+
+  /* FAQ */
+  .faq { background: var(--sand); padding: 5rem 3rem; }
+
+  .faq-list {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 760px;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(42, 107, 138, 0.1);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1.1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .faq-question:hover { color: var(--ocean); }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ocean-pale);
+    color: var(--ocean);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    transition: transform 0.25s;
+  }
+
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+  .faq-answer {
+    display: none;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+    padding-bottom: 1.1rem;
+  }
+
+  .faq-item.open .faq-answer { display: block; }
 
   /* ── CONTACT ── */
   .contact {
@@ -914,7 +1032,7 @@
 <nav id="nav">
   <div class="nav-logo">Capitaine Sousou</div>
   <ul class="nav-links">
-    <li><a href="#niveaux">Niveaux</a></li>
+    <li><a href="#philosophie">À bord</a></li>
     <li><a href="#prestations">Prestations</a></li>
     <li><a href="#galerie">Galerie</a></li>
     <li><a href="#stages">Agenda</a></li>
@@ -926,6 +1044,7 @@
 <section class="hero" id="accueil">
   <div class="hero-photo-placeholder" style="overflow:hidden;">
     <img
+      id="cms-hero-photo"
       src="https://images.unsplash.com/photo-1524722228493-c418381c4cac?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop"
       alt="Voilier en mer,photo placeholder, à remplacer par une photo de Solène"
       style="width:100%; height:100%; object-fit:cover; opacity:0.7;"
@@ -936,12 +1055,12 @@
   </div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow">Marseille · PACA · Europe entière</p>
-    <h1 class="hero-title">
+    <p class="hero-eyebrow" id="cms-hero-eyebrow">Marseille · PACA · Europe entière</p>
+    <h1 class="hero-title" id="cms-hero-titre">
       La mer s'apprend<br>mieux quand on n'a<br>pas <em>peur</em> de se<br>tromper.
     </h1>
     <p class="hero-subtitle">Solène te laisse la barre !</p>
-    <p class="hero-desc">
+    <p class="hero-desc" id="cms-hero-intro">
       Cours de voile, croisières à thème et sorties en mer depuis Marseille.
       Avec bienveillance, adaptation, douceur... Et quelques blagues nulles,
       parce qu'on retient mieux quand on sourit.
@@ -961,9 +1080,49 @@
     <path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,30 1440,40 L1440,80 L0,80 Z" fill="#fdf8f3"/>
   </svg>
 </section>
+<!-- ════════════ PHILOSOPHIE ════════════ -->
+<section class="philosophie" id="philosophie">
+  <div class="section-inner">
+    <span class="eyebrow">À bord avec Solène</span>
+    <h2 class="section-title">Une approche qui laisse de la place</h2>
+
+    <div class="philo-grid">
+      <div>
+        <p class="philo-quote">"On ne donne pas son aide, on la propose."</p>
+
+        <p class="philo-text">
+          Port d'attache à Marseille, mais Solène embarque aussi en PACA, en Bretagne
+          et partout en Europe. Sur le bateau le plus adapté à vos besoins —
+          pas le sien.
+        </p>
+        <p class="philo-text">
+          Adultes, familles, personnes en situation de handicap, groupes en mixité
+          choisie, micro-aventurier·e·s : tout le monde a sa place à bord.
+        </p>
+
+        <div class="chips">
+          <span class="chip chip-violet">Bienveillance</span>
+          <span class="chip chip-rose">Adaptation</span>
+          <span class="chip chip-ocean">Douceur</span>
+          <span class="chip chip-violet">Inclusion</span>
+          <span class="chip chip-rose">Pratique avant tout</span>
+          <span class="chip chip-ocean">Accessibilité</span>
+        </div>
+      </div>
+
+      <div class="photo-wrap-tall" style="position:relative;">
+        <img
+          src="https://images.unsplash.com/photo-1613578699399-82ae71be53a3?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop"
+          alt="Portrait placeholder, à remplacer par un portrait de Solène"
+          class="real-photo"
+        >
+        <span class="photo-credit">📸 À remplacer par portrait de Solène</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 
-<!-- ════════════ LANGUES ════════════ -->
 <div class="langues">
   <div class="langues-intro">
     <span class="eyebrow" style="display:block; text-align:center;">Accessible à tous</span>
@@ -1010,14 +1169,14 @@
 
       <div class="presta-card">
         <div class="presta-photo" style="height:180px; overflow:hidden; position:relative;">
-          <img src="https://images.unsplash.com/photo-1498623116890-37e912163d5d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Voile" style="width:100%;height:100%;object-fit:cover;">
+          <img id="cms-presta-stages-photo" src="https://images.unsplash.com/photo-1498623116890-37e912163d5d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Voile" style="width:100%;height:100%;object-fit:cover;">
           <span style="position:absolute;bottom:6px;right:8px;font-size:0.6rem;color:rgba(255,255,255,0.5);font-style:italic;">📸 À remplacer</span>
         </div>
         <div class="presta-body">
           <div class="presta-accent accent-rose"></div>
           <h3 class="presta-title">Stages de voile</h3>
           <p class="presta-subtitle">Solène te laisse la barre.</p>
-          <p class="presta-desc">
+          <p class="presta-desc" id="cms-presta-stages-desc">
             De 3 à 15 jours au départ de Marseille ou PACA.
             Stage adapté au niveau du groupe (FFVoile niveaux 1 à 4),
             pour 3 à 6 personnes. Dates personnalisées sur demande.
@@ -1040,7 +1199,7 @@
           <div class="presta-accent accent-violet"></div>
           <h3 class="presta-title">Croisières à thème</h3>
           <p class="presta-subtitle">Solène t'emmène en mer.</p>
-          <p class="presta-desc">
+          <p class="presta-desc" id="cms-presta-croisieres-desc">
             EVJF/EVG, carto-trésor, observation de la faune marine,
             voile multi-disciplines (apnée, yoga, wing…), mixité choisie,
             traversées solidaires. Privatisation pour 3 à 8 personnes.
@@ -1063,7 +1222,7 @@
           <div class="presta-accent accent-peach"></div>
           <h3 class="presta-title">Stages pré-organisés</h3>
           <p class="presta-subtitle">Rejoins l'équipage.</p>
-          <p class="presta-desc">
+          <p class="presta-desc" id="cms-presta-stages-pre-desc">
             Rejoignez d'autres élèves sur un stage déjà planifié.
             Voile-ornitho, voile-cétacés, stage du 8 mai…
             Voir l'agenda pour les prochaines dates.
@@ -1078,14 +1237,14 @@
 
       <div class="presta-card">
         <div class="presta-photo" style="height:180px; overflow:hidden; position:relative;">
-          <img src="https://plus.unsplash.com/premium_photo-1664304678337-113427376ed6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Barre bateau" style="width:100%;height:100%;object-fit:cover;">
+          <img id="cms-presta-cours-prive-photo" src="https://plus.unsplash.com/premium_photo-1664304678337-113427376ed6?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Barre bateau" style="width:100%;height:100%;object-fit:cover;">
           <span style="position:absolute;bottom:6px;right:8px;font-size:0.6rem;color:rgba(255,255,255,0.5);font-style:italic;">📸 À remplacer</span>
         </div>
         <div class="presta-body">
           <div class="presta-accent accent-ocean"></div>
           <h3 class="presta-title">Coaching & accompagnement</h3>
           <p class="presta-subtitle">Sur votre bateau.</p>
-          <p class="presta-desc">
+          <p class="presta-desc" id="cms-presta-cours-prive-desc">
             Solène monte à bord de votre propre bateau ou d'un bateau loué :
             prise en main, accompagnement d'un point A à un point B,
             ou skipper pour votre semaine de vacances.
@@ -1107,31 +1266,26 @@
   <div class="section-inner">
     <span class="eyebrow">Référentiel officiel</span>
     <h2 class="section-title">Les niveaux FFVoile</h2>
-    <p class="section-intro">Tous les stages sont calibrés sur les niveaux officiels de la Fédération Française de Voile.</p>
 
-    <div class="niveaux-grid">
+    <div class="niveaux-list">
 
-      <div class="niveau-card">
-        <div class="niveau-badge">N1</div>
-        <h3 class="niveau-title">Premiers bords</h3>
+      <div class="niveau-row">
+        <div class="niveau-label"><span class="niveau-badge">N1</span><span class="niveau-title">Premiers bords</span></div>
         <p class="niveau-desc">Se familiariser avec la manœuvre d'un voilier, avec le vocabulaire et l'environnement.</p>
       </div>
 
-      <div class="niveau-card">
-        <div class="niveau-badge">N2</div>
-        <h3 class="niveau-title">Perfectionnement</h3>
+      <div class="niveau-row">
+        <div class="niveau-label"><span class="niveau-badge">N2</span><span class="niveau-title">Perfectionnement</span></div>
         <p class="niveau-desc">Expérimenter, maîtriser les manœuvres courantes, s'initier à la cartographie et aux premières procédures de sécurité.</p>
       </div>
 
-      <div class="niveau-card">
-        <div class="niveau-badge">N3</div>
-        <h3 class="niveau-title">Évolution</h3>
+      <div class="niveau-row">
+        <div class="niveau-label"><span class="niveau-badge">N3</span><span class="niveau-title">Évolution</span></div>
         <p class="niveau-desc">Naviguer en croisière côtière (jour et initiation de nuit), en soutien à un·e chef·fe de bord. Connaître différents supports, respecter les autres usagers et l'environnement.</p>
       </div>
 
-      <div class="niveau-card">
-        <div class="niveau-badge">N4</div>
-        <h3 class="niveau-title">Autonomie</h3>
+      <div class="niveau-row">
+        <div class="niveau-label"><span class="niveau-badge">N4</span><span class="niveau-title">Autonomie</span></div>
         <p class="niveau-desc">Naviguer en autonomie et choisir sa zone de pratique. Maîtriser la croisière côtière de jour comme de nuit.</p>
       </div>
 
@@ -1145,7 +1299,7 @@
     <span class="eyebrow">En images</span>
     <h2 class="section-title">Quelques moments à bord</h2>
 
-    <div class="galerie-grid">
+    <div class="galerie-grid" id="cms-galerie-grid">
       <div style="border-radius:16px; grid-row: span 2; min-height:420px; overflow:hidden; position:relative;">
         <img src="https://images.unsplash.com/photo-1605387202149-47169c4ea58a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJvYXQlMjBzYWlsfGVufDB8fDB8fHww&fit=crop" alt="Voilier en mer" style="width:100%;height:100%;object-fit:cover;">
         <span style="position:absolute;bottom:10px;right:12px;font-size:0.6rem;color:rgba(255,255,255,0.5);font-style:italic;">📸 À remplacer</span>
@@ -1178,7 +1332,7 @@
     <h2 class="section-title">Prochains stages</h2>
 
     <div class="stages-grid">
-      <div class="stage-list">
+      <div class="stage-list" id="cms-stages-list">
 
         <div class="stage-item">
           <div>
@@ -1237,7 +1391,7 @@
         <span class="eyebrow">On appareille ?</span>
         <h2 class="section-title">Réserver votre stage</h2>
 
-        <p class="contact-desc">
+        <p class="contact-desc" id="cms-contact-intro">
           Écrivez-moi avec quelques informations et je vous propose
           la meilleure option selon votre niveau, vos envies et vos dates.
         </p>
@@ -1245,7 +1399,7 @@
         <div class="contact-info-items">
           <div class="contact-info-item">
             <span>✉️</span>
-            <a href="mailto:solenechevreuil51@gmail.com">solenechevreuil51@gmail.com</a>
+            <a id="cms-contact-email" href="mailto:solenechevreuil51@gmail.com">solenechevreuil51@gmail.com</a>
           </div>
           <div class="contact-info-item">
             <span>📍</span>
@@ -1321,6 +1475,88 @@
   </div>
 </section>
 
+<!-- ════════════ TÉMOIGNAGES (section cachée) ════════════ -->
+<section class="temoignages section-hidden" id="temoignages">
+  <div class="section-inner">
+    <span class="eyebrow">Ils ont navigué avec Solène</span>
+    <h2 class="section-title">Ce qu'ils en disent</h2>
+
+    <div class="temoignages-grid">
+
+      <div class="temoignage-card">
+        <p class="temoignage-quote">Une semaine absolument incroyable. Solène a su adapter le rythme à notre niveau, sans jamais qu'on se sente dépassés.</p>
+        <div class="temoignage-author">Marie & Thomas</div>
+        <div class="temoignage-stage">Stage voile — Marseille, été 2025</div>
+      </div>
+
+      <div class="temoignage-card">
+        <p class="temoignage-quote">Je n'avais jamais mis les pieds sur un voilier. Au bout de 3 jours j'tenais la barre toute seule. Magique.</p>
+        <div class="temoignage-author">Camille R.</div>
+        <div class="temoignage-stage">Cours débutante — niveau 1</div>
+      </div>
+
+      <div class="temoignage-card">
+        <p class="temoignage-quote">L'ambiance était top, les explications claires, et la mer était au rendez-vous. On revient l'année prochaine !</p>
+        <div class="temoignage-author">Le groupe du stage cétacés</div>
+        <div class="temoignage-stage">Voile-cétacés — PACA, 2025</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FAQ (section cachée) ════════════ -->
+<section class="faq section-hidden" id="faq">
+  <div class="section-inner">
+    <span class="eyebrow">Avant de monter à bord</span>
+    <h2 class="section-title">Questions fréquentes</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Faut-il avoir de l'expérience pour participer ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">Non, aucune expérience n'est nécessaire pour les stages niveau 1. Solène adapte toujours le contenu au groupe présent sur le bateau.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Que faut-il apporter pour un stage ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">Des vêtements chauds (même en été, le vent refroidit vite en mer), un coupe-vent imperméable, des chaussures à semelles souples, de la crème solaire et votre enthousiasme. Le matériel de sécurité est fourni.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Les stages sont-ils accessibles aux personnes en situation de handicap ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">Oui, Solène adapte ses cours aux besoins de chacun·e. Contactez-la directement pour discuter de votre situation et trouver la meilleure formule.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Quelle est la politique d'annulation ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">À compléter par Solène selon ses conditions. Contactez-la directement pour toute question sur les modalités de réservation et d'annulation.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Les cours se déroulent-ils par mauvais temps ?
+          <span class="faq-chevron">▾</span>
+        </button>
+        <div class="faq-answer">La sécurité passe avant tout. En cas de météo défavorable, le programme est adapté ou reporté. Solène surveille les conditions météo et vous prévient en amont.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ FOOTER ════════════ -->
 <footer>
   <div class="footer-logo">Capitaine Sousou</div>
@@ -1342,8 +1578,144 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
-</script>
-<script>
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ── CMS DATA LOADER ──
+  function set(id, text) {
+    const el = document.getElementById(id);
+    if (el && text) el.textContent = text;
+  }
+  function setSrc(id, src) {
+    const el = document.getElementById(id);
+    if (el && src) el.src = src;
+  }
+
+  // Hero
+  fetch('/_data/hero.json').then(r => r.json()).then(d => {
+    set('cms-hero-eyebrow', d.eyebrow);
+    set('cms-hero-intro', d.intro);
+    if (d.titre1 && d.titre2) {
+      document.getElementById('cms-hero-titre').innerHTML = d.titre1 + '<br>' + d.titre2;
+    }
+    if (d.photo_hero) setSrc('cms-hero-photo', d.photo_hero);
+  }).catch(() => {});
+
+  // Prestations
+  fetch('/_data/prestations.json').then(r => r.json()).then(d => {
+    if (d.stages) {
+      set('cms-presta-stages-desc', d.stages.description);
+      if (d.stages.photo) setSrc('cms-presta-stages-photo', d.stages.photo);
+    }
+    if (d.croisieres) set('cms-presta-croisieres-desc', d.croisieres.description);
+    if (d.stages_pre) set('cms-presta-stages-pre-desc', d.stages_pre.description);
+    if (d.cours_prive) {
+      set('cms-presta-cours-prive-desc', d.cours_prive.description);
+      if (d.cours_prive.photo) setSrc('cms-presta-cours-prive-photo', d.cours_prive.photo);
+    }
+  }).catch(() => {});
+
+  // Contact
+  fetch('/_data/contact.json').then(r => r.json()).then(d => {
+    set('cms-contact-intro', d.intro);
+    const emailEl = document.getElementById('cms-contact-email');
+    if (emailEl && d.email) {
+      emailEl.textContent = d.email;
+      emailEl.href = 'mailto:' + d.email;
+    }
+  }).catch(() => {});
+
+  // Agenda stages
+  fetch('/_data/stages.json').then(r => r.json()).then(d => {
+    const list = document.getElementById('cms-stages-list');
+    if (!list || !d.stages || d.stages.length === 0) return;
+    list.innerHTML = d.stages.map(s => `
+      <div class="stage-item ${s.statut === 'full' ? 'complet' : ''}">
+        <div>
+          <div class="stage-name">${s.nom}</div>
+          <div class="stage-placeholder">${s.date} · ${s.lieu} · ${s.duree} · ${s.places}</div>
+        </div>
+        <span class="badge ${s.statut === 'open' ? 'badge-open' : s.statut === 'full' ? 'badge-full' : 'badge-soon'}">
+          ${s.statut === 'open' ? 'Places dispo' : s.statut === 'full' ? 'Complet' : 'À venir'}
+        </span>
+      </div>`).join('');
+  }).catch(() => {});
+
+  // Galerie
+  fetch('/_data/galerie.json').then(r => r.json()).then(d => {
+    const grid = document.getElementById('cms-galerie-grid');
+    if (!grid || !d.photos || d.photos.length === 0) return;
+    grid.innerHTML = d.photos.map((p, i) => `
+      <div style="border-radius:16px;${i === 0 ? 'grid-row:span 2;min-height:420px;' : ''} overflow:hidden;position:relative;">
+        <img src="${p.src}" alt="${p.alt}" style="width:100%;height:100%;object-fit:cover;">
+      </div>`).join('');
+  }).catch(() => {});
+
+  // Témoignages (section cachée)
+  fetch('/_data/temoignages.json').then(r => r.json()).then(d => {
+    const section = document.getElementById('temoignages');
+    if (!section) return;
+    if (d.visible) {
+      section.classList.add('visible');
+      if (d.temoignages && d.temoignages.length > 0) {
+        const grid = section.querySelector('.temoignages-grid');
+        if (grid) grid.innerHTML = d.temoignages.map(t => `
+          <div class="temoignage-card">
+            <p class="temoignage-quote">${t.texte}</p>
+            <div class="temoignage-author">${t.auteur}</div>
+            <div class="temoignage-stage">${t.stage}</div>
+          </div>`).join('');
+      }
+    }
+  }).catch(() => {});
+
+  // FAQ (section cachée)
+  fetch('/_data/faq.json').then(r => r.json()).then(d => {
+    const section = document.getElementById('faq');
+    if (!section) return;
+    if (d.visible) {
+      section.classList.add('visible');
+      if (d.questions && d.questions.length > 0) {
+        const list = section.querySelector('.faq-list');
+        if (list) {
+          list.innerHTML = d.questions.map(q => `
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                ${q.question}<span class="faq-chevron">▾</span>
+              </button>
+              <div class="faq-answer">${q.reponse}</div>
+            </div>`).join('');
+          list.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const item = btn.closest('.faq-item');
+              const isOpen = item.classList.contains('open');
+              list.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('open');
+                i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+              });
+              if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+            });
+          });
+        }
+      }
+    }
+  }).catch(() => {});
+
+  // Netlify Identity redirect
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
       if (!user) {
