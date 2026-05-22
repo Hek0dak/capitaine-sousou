@@ -1,3 +1,12 @@
 {
-  "stages": []
+  "stages": [
+    {
+      "nom": "Stage test",
+      "date": "12 Juin 2026",
+      "lieu": "Marseille",
+      "duree": "3 jours",
+      "places": "8",
+      "statut": "full"
+    }
+  ]
 }
