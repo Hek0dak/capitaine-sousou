@@ -1,0 +1,24 @@
+{
+  "niveaux": [
+    {
+      "code": "N1",
+      "titre": "Premiers bords",
+      "description": "Se familiariser avec la manœuvre d'un voilier, avec le vocabulaire et l'environnement."
+    },
+    {
+      "code": "N2",
+      "titre": "Perfectionnement",
+      "description": "Expérimenter, maîtriser les manœuvres courantes, s'initier à la cartographie et aux premières procédures de sécurité."
+    },
+    {
+      "code": "N3",
+      "titre": "Évolution",
+      "description": "Naviguer en croisière côtière (jour et initiation de nuit), en soutien à un·e chef·fe de bord. Connaître différents supports, respecter les autres usagers et l'environnement."
+    },
+    {
+      "code": "N4",
+      "titre": "Autonomie",
+      "description": "Naviguer en autonomie et choisir sa zone de pratique. Maîtriser la croisière côtière de jour comme de nuit."
+    }
+  ]
+}
