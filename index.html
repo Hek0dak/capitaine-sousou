@@ -534,6 +534,27 @@
   }
 
   /* ── GALERIE ── */
+
+  .galerie-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .galerie-legende {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+    color: #fff;
+    font-size: 0.78rem;
+    font-style: italic;
+    padding: 1.5rem 0.9rem 0.7rem;
+    letter-spacing: 0.03em;
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .galerie-item:hover .galerie-legende { opacity: 1; }
   .galerie { background: var(--sand-dark); }
 
   .galerie-grid {
@@ -1088,19 +1109,16 @@
 
     <div class="philo-grid">
       <div>
-        <p class="philo-quote">"On ne donne pas son aide, on la propose."</p>
-
-        <p class="philo-text">
+        <p class="philo-quote" id="cms-philo-quote">"On ne donne pas son aide, on la propose."</p>
+        <p class="philo-text" id="cms-philo-texte1">
           Port d'attache à Marseille, mais Solène embarque aussi en PACA, en Bretagne
-          et partout en Europe. Sur le bateau le plus adapté à vos besoins —
-          pas le sien.
+          et partout en Europe. Sur le bateau le plus adapté à vos besoins — pas le sien.
         </p>
-        <p class="philo-text">
+        <p class="philo-text" id="cms-philo-texte2">
           Adultes, familles, personnes en situation de handicap, groupes en mixité
           choisie, micro-aventurier·e·s : tout le monde a sa place à bord.
         </p>
-
-        <div class="chips">
+        <div class="chips" id="cms-philo-chips">
           <span class="chip chip-violet">Bienveillance</span>
           <span class="chip chip-rose">Adaptation</span>
           <span class="chip chip-ocean">Douceur</span>
@@ -1112,8 +1130,9 @@
 
       <div class="photo-wrap-tall" style="position:relative;">
         <img
+          id="cms-philo-photo"
           src="https://images.unsplash.com/photo-1613578699399-82ae71be53a3?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop"
-          alt="Portrait placeholder, à remplacer par un portrait de Solène"
+          alt="Portrait de Solène"
           class="real-photo"
         >
         <span class="photo-credit">📸 À remplacer par portrait de Solène</span>
@@ -1123,34 +1142,30 @@
 </section>
 
 
-<div class="langues">
+<div class="langues" id="cms-langues-section">
   <div class="langues-intro">
     <span class="eyebrow" style="display:block; text-align:center;">Accessible à tous</span>
-    <h2 class="section-title" style="text-align:center; font-size:1.8rem;">Les cours sont disponibles en 3 langues</h2>
+    <h2 class="section-title" id="cms-langues-titre" style="text-align:center; font-size:1.8rem;">Les cours sont disponibles en 3 langues</h2>
   </div>
-  <div class="langues-inner">
-
+  <div class="langues-inner" id="cms-langues-grid">
     <div class="langue-card">
       <span class="langue-flag">🇫🇷</span>
       <div class="langue-name">Français</div>
       <div class="langue-sub">Bien sûr !</div>
       <p class="langue-desc">Tous les cours, explications et supports sont disponibles en français. C'est la langue principale de Solène.</p>
     </div>
-
     <div class="langue-card" style="border-top: 3px solid var(--rose);">
       <span class="langue-flag">🇬🇧</span>
       <div class="langue-name">English</div>
       <div class="langue-sub">Of course!</div>
       <p class="langue-desc">Solène teaches sailing in English: all lessons, safety instructions and manœuvres explained clearly.</p>
     </div>
-
     <div class="langue-card" style="border-top: 3px solid var(--violet);">
       <span class="langue-flag">🇪🇸</span>
       <div class="langue-name">Español</div>
       <div class="langue-sub">¡Por supuesto!</div>
       <p class="langue-desc">Los cursos también están disponibles en español: bienvenidos a bordo todos los hispanohablantes.</p>
     </div>
-
   </div>
 </div>
 
@@ -1266,29 +1281,23 @@
   <div class="section-inner">
     <span class="eyebrow">Référentiel officiel</span>
     <h2 class="section-title">Les niveaux FFVoile</h2>
-
-    <div class="niveaux-list">
-
+    <div class="niveaux-list" id="cms-niveaux-list">
       <div class="niveau-row">
         <div class="niveau-label"><span class="niveau-badge">N1</span><span class="niveau-title">Premiers bords</span></div>
         <p class="niveau-desc">Se familiariser avec la manœuvre d'un voilier, avec le vocabulaire et l'environnement.</p>
       </div>
-
       <div class="niveau-row">
         <div class="niveau-label"><span class="niveau-badge">N2</span><span class="niveau-title">Perfectionnement</span></div>
         <p class="niveau-desc">Expérimenter, maîtriser les manœuvres courantes, s'initier à la cartographie et aux premières procédures de sécurité.</p>
       </div>
-
       <div class="niveau-row">
         <div class="niveau-label"><span class="niveau-badge">N3</span><span class="niveau-title">Évolution</span></div>
         <p class="niveau-desc">Naviguer en croisière côtière (jour et initiation de nuit), en soutien à un·e chef·fe de bord. Connaître différents supports, respecter les autres usagers et l'environnement.</p>
       </div>
-
       <div class="niveau-row">
         <div class="niveau-label"><span class="niveau-badge">N4</span><span class="niveau-title">Autonomie</span></div>
         <p class="niveau-desc">Naviguer en autonomie et choisir sa zone de pratique. Maîtriser la croisière côtière de jour comme de nuit.</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -1382,7 +1391,45 @@
   </div>
 </section>
 
+
+
+
+
+
+
+<!-- ════════════ TÉMOIGNAGES (section cachée) ════════════ -->
+
+<section class="temoignages section-hidden" id="temoignages">
+  <div class="section-inner">
+    <span class="eyebrow">Ils ont navigué avec Solène</span>
+    <h2 class="section-title">Ce qu'ils en disent</h2>
+
+    <div class="temoignages-grid">
+
+      <div class="temoignage-card">
+        <p class="temoignage-quote">Une semaine absolument incroyable. Solène a su adapter le rythme à notre niveau, sans jamais qu'on se sente dépassés.</p>
+        <div class="temoignage-author">Marie & Thomas</div>
+        <div class="temoignage-stage">Stage voile — Marseille, été 2025</div>
+      </div>
+
+      <div class="temoignage-card">
+        <p class="temoignage-quote">Je n'avais jamais mis les pieds sur un voilier. Au bout de 3 jours j'tenais la barre toute seule. Magique.</p>
+        <div class="temoignage-author">Camille R.</div>
+        <div class="temoignage-stage">Cours débutante — niveau 1</div>
+      </div>
+
+      <div class="temoignage-card">
+        <p class="temoignage-quote">L'ambiance était top, les explications claires, et la mer était au rendez-vous. On revient l'année prochaine !</p>
+        <div class="temoignage-author">Le groupe du stage cétacés</div>
+        <div class="temoignage-stage">Voile-cétacés — PACA, 2025</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ CONTACT ════════════ -->
+
 <section class="contact" id="contact">
   <div class="section-inner">
     <div class="contact-grid">
@@ -1475,37 +1522,8 @@
   </div>
 </section>
 
-<!-- ════════════ TÉMOIGNAGES (section cachée) ════════════ -->
-<section class="temoignages section-hidden" id="temoignages">
-  <div class="section-inner">
-    <span class="eyebrow">Ils ont navigué avec Solène</span>
-    <h2 class="section-title">Ce qu'ils en disent</h2>
-
-    <div class="temoignages-grid">
-
-      <div class="temoignage-card">
-        <p class="temoignage-quote">Une semaine absolument incroyable. Solène a su adapter le rythme à notre niveau, sans jamais qu'on se sente dépassés.</p>
-        <div class="temoignage-author">Marie & Thomas</div>
-        <div class="temoignage-stage">Stage voile — Marseille, été 2025</div>
-      </div>
-
-      <div class="temoignage-card">
-        <p class="temoignage-quote">Je n'avais jamais mis les pieds sur un voilier. Au bout de 3 jours j'tenais la barre toute seule. Magique.</p>
-        <div class="temoignage-author">Camille R.</div>
-        <div class="temoignage-stage">Cours débutante — niveau 1</div>
-      </div>
-
-      <div class="temoignage-card">
-        <p class="temoignage-quote">L'ambiance était top, les explications claires, et la mer était au rendez-vous. On revient l'année prochaine !</p>
-        <div class="temoignage-author">Le groupe du stage cétacés</div>
-        <div class="temoignage-stage">Voile-cétacés — PACA, 2025</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
 <!-- ════════════ FAQ (section cachée) ════════════ -->
+
 <section class="faq section-hidden" id="faq">
   <div class="section-inner">
     <span class="eyebrow">Avant de monter à bord</span>
@@ -1579,7 +1597,7 @@
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // FAQ accordion
+  // FAQ accordion (static)
   document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -1598,12 +1616,14 @@
   // ── CMS DATA LOADER ──
   function set(id, text) {
     const el = document.getElementById(id);
-    if (el && text) el.textContent = text;
+    if (el && text !== undefined && text !== null) el.textContent = text;
   }
   function setSrc(id, src) {
     const el = document.getElementById(id);
     if (el && src) el.src = src;
   }
+
+  const chipColors = ['chip-violet', 'chip-rose', 'chip-ocean'];
 
   // Hero
   fetch('/_data/hero.json').then(r => r.json()).then(d => {
@@ -1613,6 +1633,51 @@
       document.getElementById('cms-hero-titre').innerHTML = d.titre1 + '<br>' + d.titre2;
     }
     if (d.photo_hero) setSrc('cms-hero-photo', d.photo_hero);
+  }).catch(() => {});
+
+  // Philosophie
+  fetch('/_data/philosophie.json').then(r => r.json()).then(d => {
+    set('cms-philo-quote', d.quote);
+    set('cms-philo-texte1', d.texte1);
+    set('cms-philo-texte2', d.texte2);
+    if (d.photo) setSrc('cms-philo-photo', d.photo);
+    if (d.chips && d.chips.length > 0) {
+      const el = document.getElementById('cms-philo-chips');
+      if (el) el.innerHTML = d.chips.map((c, i) =>
+        `<span class="chip ${chipColors[i % 3]}">${c}</span>`
+      ).join('');
+    }
+  }).catch(() => {});
+
+  // Langues
+  fetch('/_data/langues.json').then(r => r.json()).then(d => {
+    set('cms-langues-titre', d.titre);
+    const accents = ['', 'border-top: 3px solid var(--rose);', 'border-top: 3px solid var(--violet);'];
+    if (d.langues && d.langues.length > 0) {
+      const grid = document.getElementById('cms-langues-grid');
+      if (grid) grid.innerHTML = d.langues.map((l, i) => `
+        <div class="langue-card" style="${accents[i] || ''}">
+          <span class="langue-flag">${l.drapeau}</span>
+          <div class="langue-name">${l.nom}</div>
+          <div class="langue-sub">${l.accroche}</div>
+          <p class="langue-desc">${l.description}</p>
+        </div>`).join('');
+    }
+  }).catch(() => {});
+
+  // Niveaux FFVoile
+  fetch('/_data/niveaux.json').then(r => r.json()).then(d => {
+    if (d.niveaux && d.niveaux.length > 0) {
+      const list = document.getElementById('cms-niveaux-list');
+      if (list) list.innerHTML = d.niveaux.map(n => `
+        <div class="niveau-row">
+          <div class="niveau-label">
+            <span class="niveau-badge">${n.code}</span>
+            <span class="niveau-title">${n.titre}</span>
+          </div>
+          <p class="niveau-desc">${n.description}</p>
+        </div>`).join('');
+    }
   }).catch(() => {});
 
   // Prestations
@@ -1649,23 +1714,24 @@
           <div class="stage-name">${s.nom}</div>
           <div class="stage-placeholder">${s.date} · ${s.lieu} · ${s.duree} · ${s.places}</div>
         </div>
-        <span class="badge ${s.statut === 'open' ? 'badge-open' : s.statut === 'full' ? 'badge-full' : 'badge-soon'}">
+        <span class="badge ${s.statut === 'open' ? 'badge-open' : s.statut === 'full' ? 'badge-closed' : 'badge-soon'}">
           ${s.statut === 'open' ? 'Places dispo' : s.statut === 'full' ? 'Complet' : 'À venir'}
         </span>
       </div>`).join('');
   }).catch(() => {});
 
-  // Galerie
+  // Galerie (avec légendes)
   fetch('/_data/galerie.json').then(r => r.json()).then(d => {
     const grid = document.getElementById('cms-galerie-grid');
     if (!grid || !d.photos || d.photos.length === 0) return;
     grid.innerHTML = d.photos.map((p, i) => `
-      <div style="border-radius:16px;${i === 0 ? 'grid-row:span 2;min-height:420px;' : ''} overflow:hidden;position:relative;">
-        <img src="${p.src}" alt="${p.alt}" style="width:100%;height:100%;object-fit:cover;">
+      <div class="galerie-item" style="${i === 0 ? 'grid-row:span 2;min-height:420px;border-radius:16px;' : ''}">
+        <img src="${p.src}" alt="${p.alt}" style="width:100%;height:100%;object-fit:cover;display:block;">
+        ${p.legende ? `<div class="galerie-legende">${p.legende}</div>` : ''}
       </div>`).join('');
   }).catch(() => {});
 
-  // Témoignages (section cachée)
+  // Témoignages (section cachée, visible si visible=true)
   fetch('/_data/temoignages.json').then(r => r.json()).then(d => {
     const section = document.getElementById('temoignages');
     if (!section) return;
@@ -1683,7 +1749,7 @@
     }
   }).catch(() => {});
 
-  // FAQ (section cachée)
+  // FAQ (section cachée, visible si visible=true)
   fetch('/_data/faq.json').then(r => r.json()).then(d => {
     const section = document.getElementById('faq');
     if (!section) return;
@@ -1726,6 +1792,5 @@
     });
   }
 </script>
-
 </body>
 </html>
