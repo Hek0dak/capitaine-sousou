@@ -2,11 +2,13 @@
   "photos": [
     {
       "src": "/images/uploads/20260109_182258.jpg",
-      "alt": "paddle"
+      "alt": "paddle",
+      "legende": "paddle"
     },
     {
       "src": "/images/uploads/img-20260104-wa0008.jpg",
-      "alt": "Notre bateau!"
+      "alt": "Notre bateau!",
+      "legende": "Notre bateau !"
     }
   ]
 }
