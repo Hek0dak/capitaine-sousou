@@ -7,6 +7,14 @@
       "duree": "3 jours",
       "places": "8",
       "statut": "full"
+    },
+    {
+      "nom": "Stage de voile et cuisine",
+      "date": "03 juillet 2026",
+      "lieu": "Nice",
+      "duree": "2 jours",
+      "places": "9",
+      "statut": "open"
     }
   ]
 }
