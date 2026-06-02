@@ -5,7 +5,7 @@
       "date": "27 juin au 4 juillet 2026",
       "lieu": "Hyères",
       "duree": "7 jours",
-      "places": "6",
+      "places": "6 places",
       "statut": "full"
     },
     {
@@ -13,7 +13,7 @@
       "date": "23 au 25 mai 2026",
       "lieu": "Marseille",
       "duree": "3 jours",
-      "places": "5",
+      "places": "5 places",
       "statut": "full"
     },
     {
@@ -21,7 +21,7 @@
       "date": "14 au 19 juin 2026",
       "lieu": "Marseille - Calvi",
       "duree": "6 jours",
-      "places": "6",
+      "places": "6 places",
       "statut": "full"
     },
     {
@@ -29,7 +29,7 @@
       "date": "16 au 24 juillet 2026",
       "lieu": "Marseille - Corse/Baléares",
       "statut": "soon",
-      "places": "5",
+      "places": "5 places",
       "duree": "9 jours"
     },
     {
@@ -37,7 +37,7 @@
       "date": "25 juillet au 2 août ",
       "lieu": "Marseille - Corse/Baléares",
       "duree": "9 jours",
-      "places": "5",
+      "places": "5 places",
       "statut": "soon"
     },
     {
@@ -45,7 +45,7 @@
       "date": "29 - 30 août 2026",
       "lieu": "Marseille",
       "duree": "2 jours",
-      "places": "6",
+      "places": "6 places",
       "statut": "soon"
     }
   ]
