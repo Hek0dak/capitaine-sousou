@@ -9,6 +9,10 @@
       "src": "/images/uploads/img-20260104-wa0008.jpg",
       "alt": "Notre bateau!",
       "legende": "Notre bateau !"
+    },
+    {
+      "src": "https://www.youtube.com/watch?v=CkSIIeX6Oyk",
+      "alt": "testing"
     }
   ]
 }
