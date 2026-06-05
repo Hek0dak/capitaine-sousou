@@ -1,14 +1,6 @@
 {
   "stages": [
     {
-      "nom": "Stage \"Vogue et cétacés\"",
-      "date": "27 juin au 4 juillet 2026",
-      "lieu": "Hyères",
-      "duree": "7 jours",
-      "places": "6 places",
-      "statut": "full"
-    },
-    {
       "nom": "Stage voile et observation des oiseaux",
       "date": "23 au 25 mai 2026",
       "lieu": "Marseille",
@@ -21,28 +13,36 @@
       "date": "14 au 19 juin 2026",
       "lieu": "Marseille - Calvi",
       "duree": "6 jours",
-      "places": "6 places",
-      "statut": "full"
+      "places": "COMPLET",
+      "statut": "soon"
     },
     {
-      "nom": "Stage \"au large\" - Méditerranée",
-      "date": "16 au 24 juillet 2026",
-      "lieu": "Marseille - Corse/Baléares",
+      "nom": "Stage \"Vogue et cétacés\"",
+      "date": "27 juin au 4 juillet 2026",
+      "lieu": "Hyères",
+      "duree": "7 jours",
+      "places": "COMPLET",
+      "statut": "soon"
+    },
+    {
+      "nom": "Navigation & perfectionnement ",
+      "date": "20 au 27 juillet 2026",
+      "lieu": "Marseille - Méditerranée",
       "statut": "soon",
       "places": "5 places",
-      "duree": "9 jours"
+      "duree": "7 jours"
     },
     {
-      "nom": "Stage \"au large\" - Méditerranée",
-      "date": "25 juillet au 2 août ",
-      "lieu": "Marseille - Corse/Baléares",
-      "duree": "9 jours",
+      "nom": "Navigation & perfectionnement",
+      "date": "28 juillet au 2 août ",
+      "lieu": "Marseille - Méditerranée",
+      "duree": "7 jours",
       "places": "5 places",
       "statut": "soon"
     },
     {
       "nom": "Voile et observation de la faune marine",
-      "date": "29 - 30 août 2026",
+      "date": "28 - 30 août 2026",
       "lieu": "Marseille",
       "duree": "2 jours",
       "places": "6 places",
