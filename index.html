@@ -1524,6 +1524,9 @@
 
         <button class="form-submit" type="submit">Envoyer ma demande ⛵</button>
         <p class="form-note">Réponse sous 48h · Aucune obligation · Ce formulaire envoie directement à Solène</p>
+        <p id="form-success" style="display:none; color:#2a6b8a; font-weight:600; text-align:center; margin-top:1rem; font-size:0.9rem;">
+          ⛵ Message envoyé !
+        </p>
         </form>
       </div>
 
@@ -1790,6 +1793,23 @@
     }
   }).catch(() => {});
 
+   // Formulaire de contact AJAX
+  const form = document.querySelector('form[name="contact"]');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(() => {
+        form.reset();
+        document.getElementById('form-success').style.display = 'block';
+      })
+      .catch(() => alert('Une erreur est survenue, merci de réessayer.'));
+    });
+  }
   // Netlify Identity redirect
   if (window.netlifyIdentity) {
     window.netlifyIdentity.on("init", user => {
