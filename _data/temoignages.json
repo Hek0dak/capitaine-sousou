@@ -1,11 +1,16 @@
 {
-  "visible": false,
+  "visible": true,
   "entrees": [
     {
       "titre": "Première sortie de la saison",
       "texte": "Le mistral soufflait fort ce matin, mais on a quand même appareillé. Les stagiaires ont adoré sentir le vent dans les voiles pour la première fois. Un groupe de dauphins nous a accompagnés jusqu'à la pointe de Riou.",
       "date": "15 mai 2026",
-      "tags": ["stage débutant", "dauphins", "Marseille", "printemps"]
+      "tags": [
+        "stage débutant",
+        "dauphins",
+        "Marseille",
+        "printemps"
+      ]
     }
   ]
 }
