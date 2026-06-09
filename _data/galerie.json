@@ -11,8 +11,9 @@
       "legende": "Notre bateau !"
     },
     {
-      "src": "https://www.youtube.com/watch?v=CkSIIeX6Oyk",
-      "alt": "testing"
+      "src": "",
+      "video_url": "https://www.youtube.com/watch?v=CkSIIeX6Oyk",
+      "alt": "Vidéo de navigation"
     }
   ]
 }
