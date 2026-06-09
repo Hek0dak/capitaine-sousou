@@ -1731,16 +1731,50 @@
       </div>`).join('');
   }).catch(() => {});
 
-  // Galerie (avec légendes)
-  fetch('/_data/galerie.json').then(r => r.json()).then(d => {
-    const grid = document.getElementById('cms-galerie-grid');
-    if (!grid || !d.photos || d.photos.length === 0) return;
-    grid.innerHTML = d.photos.map((p, i) => `
-      <div class="galerie-item" style="${i === 0 ? 'grid-row:span 2;min-height:420px;border-radius:16px;' : ''}">
-        <img src="${p.src}" alt="${p.alt}" style="width:100%;height:100%;object-fit:cover;display:block;">
+  // Galerie (avec légendes + vidéos YouTube)
+fetch('/_data/galerie.json').then(r => r.json()).then(d => {
+  const grid = document.getElementById('cms-galerie-grid');
+  if (!grid || !d.photos || d.photos.length === 0) return;
+
+  // Fonction pour extraire l'ID YouTube
+  function getYTId(url) {
+    const m = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
+    return m ? m[1] : null;
+  }
+
+  grid.innerHTML = d.photos.map((p, i) => {
+    const isVideo = p.video_url && p.video_url.includes('youtube');
+    const ytId = isVideo ? getYTId(p.video_url) : null;
+    const thumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : p.src;
+    const style = i === 0 ? 'grid-row:span 2;min-height:420px;border-radius:16px;' : '';
+    return `
+      <div class="galerie-item" style="${style}" ${isVideo ? `data-video-url="https://www.youtube.com/embed/${ytId}?autoplay=1"` : ''}>
+        <img src="${thumb}" alt="${p.alt}" style="width:100%;height:100%;object-fit:cover;display:block;">
+        ${isVideo ? '<div class="video-play-btn">▶</div>' : ''}
         ${p.legende ? `<div class="galerie-legende">${p.legende}</div>` : ''}
-      </div>`).join('');
-  }).catch(() => {});
+      </div>`;
+  }).join('');
+
+  // Ouvrir modal au clic sur vidéo
+  grid.querySelectorAll('[data-video-url]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('video-modal-iframe').src = el.dataset.videoUrl;
+      document.getElementById('video-modal').classList.add('open');
+    });
+  });
+}).catch(() => {});
+
+// Fermer modal vidéo
+document.getElementById('video-modal-close').addEventListener('click', () => {
+  document.getElementById('video-modal').classList.remove('open');
+  document.getElementById('video-modal-iframe').src = '';
+});
+document.getElementById('video-modal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.classList.remove('open');
+    document.getElementById('video-modal-iframe').src = '';
+  }
+});
 
   // Témoignages (section cachée, visible si visible=true)
   fetch('/_data/temoignages.json').then(r => r.json()).then(d => {
