@@ -539,6 +539,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 12px;
+    cursor: pointer;
   }
 
   .galerie-legende {
@@ -555,6 +556,62 @@
   }
 
   .galerie-item:hover .galerie-legende { opacity: 1; }
+
+  /* Bouton play sur miniature vidéo */
+  .video-play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px; height: 56px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    transition: transform 0.2s, background 0.2s;
+    pointer-events: none;
+  }
+  .galerie-item:hover .video-play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: #fff;
+  }
+
+  /* Modal vidéo */
+  .video-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+  .video-modal.open { display: flex; }
+  .video-modal-inner {
+    position: relative;
+    width: 90vw;
+    max-width: 900px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .video-modal-inner iframe {
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-modal-close {
+    position: absolute;
+    top: -40px; right: 0;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    background: none;
+    border: none;
+    padding: 4px 8px;
+  }
+
   .galerie { background: var(--sand-dark); }
 
   .galerie-grid {
@@ -639,6 +696,12 @@
 
   .badge-open   { background: var(--rose-pale); color: var(--rose); border: 1px solid var(--rose-light); }
   .badge-closed { background: #f0f0f0; color: #999; border: 1px solid #ddd; }
+  .badge-soon   { background: #e8f4fd; color: var(--ocean); border: 1px solid #b3d9f0; }
+  .badge-done   { background: #f0f0f0; color: #aaa; border: 1px solid #ddd; text-decoration: line-through; }
+
+  .stage-prix { font-size: 0.85rem; font-weight: 700; color: var(--ocean); margin-top: 4px; }
+  .stage-desc { font-size: 0.82rem; color: #666; margin-top: 4px; line-height: 1.4; }
+  .stage-item.done { opacity: 0.5; }
 
   .stages-photo { display: flex; flex-direction: column; gap: 12px; }
 
@@ -651,7 +714,7 @@
 
   .temoignages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 2.5rem;
   }
@@ -664,36 +727,44 @@
     position: relative;
   }
 
-  .temoignage-quote {
-    font-family: var(--font-title);
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-dark);
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
-  }
-
-  .temoignage-quote::before {
-    content: '\201C';
-    font-size: 2.5rem;
-    color: var(--violet-light);
-    line-height: 0;
-    vertical-align: -0.6rem;
-    margin-right: 4px;
-  }
-
-  .temoignage-author {
-    font-size: 0.82rem;
+  .journal-date {
+    font-size: 0.75rem;
     font-weight: 600;
     color: var(--violet);
-    letter-spacing: 0.06em;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
   }
 
-  .temoignage-stage {
-    font-size: 0.8rem;
-    color: var(--text-light);
-    margin-top: 2px;
+  .journal-titre {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .journal-texte {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .journal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .journal-tag {
+    font-size: 0.73rem;
+    background: var(--violet-pale);
+    color: var(--violet);
+    border-radius: 20px;
+    padding: 2px 10px;
+    border: 1px solid rgba(138,101,160,0.2);
   }
 
   /* FAQ */
@@ -1055,8 +1126,8 @@
   <ul class="nav-links">
     <li><a href="#philosophie">À bord</a></li>
     <li><a href="#prestations">Prestations</a></li>
-    <li><a href="#galerie">Galerie</a></li>
     <li><a href="#stages">Agenda</a></li>
+    <li><a href="#galerie">Galerie</a></li>
     <li><a href="#contact" class="nav-cta">Réserver</a></li>
   </ul>
 </nav>
@@ -1303,36 +1374,6 @@
 </section>
 
 <!-- ════════════ GALERIE ════════════ -->
-<section class="galerie" id="galerie">
-  <div class="section-inner">
-    <span class="eyebrow">En images</span>
-    <h2 class="section-title">Quelques moments à bord</h2>
-
-    <div class="galerie-grid" id="cms-galerie-grid">
-      <div style="border-radius:16px; grid-row: span 2; min-height:420px; overflow:hidden; position:relative;">
-        <img src="https://images.unsplash.com/photo-1605387202149-47169c4ea58a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJvYXQlMjBzYWlsfGVufDB8fDB8fHww&fit=crop" alt="Voilier en mer" style="width:100%;height:100%;object-fit:cover;">
-        <span style="position:absolute;bottom:10px;right:12px;font-size:0.6rem;color:rgba(255,255,255,0.5);font-style:italic;">📸 À remplacer</span>
-      </div>
-      <div class="photo-wrap-sm" style="position:relative;">
-        <img src="https://images.unsplash.com/photo-1636730740168-c94f3ab802e6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Équipage" style="width:100%;height:100%;object-fit:cover;">
-        <span class="photo-credit">À remplacer</span>
-      </div>
-      <div class="photo-wrap-sm" style="position:relative;">
-        <img src="https://images.unsplash.com/photo-1474917518260-23f84bd71c75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGJvYXQlMjBzYWlsfGVufDB8fDB8fHww&fit=crop" alt="Marseille" style="width:100%;height:100%;object-fit:cover;">
-        <span class="photo-credit">À remplacer</span>
-      </div>
-      <div class="photo-wrap-sm" style="position:relative;">
-        <img src="https://plus.unsplash.com/premium_photo-1721373830852-d1b5db7cb217?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Faune marine" style="width:100%;height:100%;object-fit:cover;">
-        <span class="photo-credit">À remplacer</span>
-      </div>
-      <div class="photo-wrap-sm" style="position:relative;">
-        <img src="https://images.unsplash.com/photo-1573157726810-b51b782f3bfd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGJvYXQlMjBzYWlsfGVufDB8fDB8fHww&fit=crop" alt="Navigation" style="width:100%;height:100%;object-fit:cover;">
-        <span class="photo-credit">À remplacer</span>
-      </div>
-    </div>
-    <p class="galerie-note"> Photo de Solène/voilier </p>
-  </div>
-</section>
 
 <!-- ════════════ STAGES ════════════ -->
 <section class="stages" id="stages">
@@ -1388,6 +1429,47 @@
         </div>
       </div>
     </div>
+
+    <div style="text-align:center; margin-top:2.5rem;">
+      <p style="font-size:1rem; color:#555; margin-bottom:1rem;">Un stage vous intéresse ? Une question avant de vous lancer ?</p>
+      <a href="#contact" style="display:inline-block; background:var(--ocean); color:#fff; padding:0.85rem 2rem; border-radius:50px; font-family:'Nunito',sans-serif; font-weight:700; font-size:1rem; text-decoration:none; transition:background 0.2s;">
+        ⛵ Nous contacter
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════ GALERIE ════════════ -->
+<section class="galerie" id="galerie">
+  <div class="section-inner">
+    <span class="eyebrow">En images</span>
+    <h2 class="section-title">Quelques moments à bord</h2>
+
+    <div class="galerie-grid" id="cms-galerie-grid">
+      <div style="border-radius:16px; grid-row: span 2; min-height:420px; overflow:hidden; position:relative;">
+        <img src="https://images.unsplash.com/photo-1605387202149-47169c4ea58a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJvYXQlMjBzYWlsfGVufDB8fDB8fHww&fit=crop" alt="Voilier en mer" style="width:100%;height:100%;object-fit:cover;">
+        <span style="position:absolute;bottom:10px;right:12px;font-size:0.6rem;color:rgba(255,255,255,0.5);font-style:italic;">📸 À remplacer</span>
+      </div>
+      <div class="photo-wrap-sm" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1636730740168-c94f3ab802e6?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Équipage" style="width:100%;height:100%;object-fit:cover;">
+        <span class="photo-credit">À remplacer</span>
+      </div>
+      <div class="photo-wrap-sm" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1474917518260-23f84bd71c75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGJvYXQlMjBzYWlsfGVufDB8fDB8fHww&fit=crop" alt="Marseille" style="width:100%;height:100%;object-fit:cover;">
+        <span class="photo-credit">À remplacer</span>
+      </div>
+      <div class="photo-wrap-sm" style="position:relative;">
+        <img src="https://plus.unsplash.com/premium_photo-1721373830852-d1b5db7cb217?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fit=crop" alt="Faune marine" style="width:100%;height:100%;object-fit:cover;">
+        <span class="photo-credit">À remplacer</span>
+      </div>
+      <div class="photo-wrap-sm" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1573157726810-b51b782f3bfd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGJvYXQlMjBzYWlsfGVufDB8fDB8fHww&fit=crop" alt="Navigation" style="width:100%;height:100%;object-fit:cover;">
+        <span class="photo-credit">À remplacer</span>
+      </div>
+    </div>
+    <p class="galerie-note"> Photo de Solène/voilier </p>
   </div>
 </section>
 
@@ -1397,33 +1479,16 @@
 
 
 
-<!-- ════════════ TÉMOIGNAGES (section cachée) ════════════ -->
+<!-- ════════════ JOURNAL DE BORD (section cachée) ════════════ -->
 
 <section class="temoignages section-hidden" id="temoignages">
   <div class="section-inner">
-    <span class="eyebrow">Ils ont navigué avec Solène</span>
-    <h2 class="section-title">Ce qu'ils en disent</h2>
+    <span class="eyebrow">À bord avec Solène</span>
+    <h2 class="section-title">Journal de bord</h2>
+    <p style="text-align:center; color:#666; font-size:0.95rem; margin-top:-0.5rem; margin-bottom:2rem;">Récits de sorties, rencontres avec la faune, moments à bord…</p>
 
-    <div class="temoignages-grid">
-
-      <div class="temoignage-card">
-        <p class="temoignage-quote">Une semaine absolument incroyable. Solène a su adapter le rythme à notre niveau, sans jamais qu'on se sente dépassés.</p>
-        <div class="temoignage-author">Marie & Thomas</div>
-        <div class="temoignage-stage">Stage voile — Marseille, été 2025</div>
-      </div>
-
-      <div class="temoignage-card">
-        <p class="temoignage-quote">Je n'avais jamais mis les pieds sur un voilier. Au bout de 3 jours j'tenais la barre toute seule. Magique.</p>
-        <div class="temoignage-author">Camille R.</div>
-        <div class="temoignage-stage">Cours débutante — niveau 1</div>
-      </div>
-
-      <div class="temoignage-card">
-        <p class="temoignage-quote">L'ambiance était top, les explications claires, et la mer était au rendez-vous. On revient l'année prochaine !</p>
-        <div class="temoignage-author">Le groupe du stage cétacés</div>
-        <div class="temoignage-stage">Voile-cétacés — PACA, 2025</div>
-      </div>
-
+    <div class="temoignages-grid" id="cms-journal-grid">
+      <!-- Entrées chargées dynamiquement depuis _data/temoignages.json -->
     </div>
   </div>
 </section>
@@ -1587,6 +1652,14 @@
 </section>
 
 <!-- ════════════ FOOTER ════════════ -->
+<!-- ════════════ MODAL VIDÉO ════════════ -->
+<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-label="Lecteur vidéo">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" id="video-modal-close" aria-label="Fermer">✕</button>
+    <iframe id="video-modal-iframe" src="" allowfullscreen allow="autoplay"></iframe>
+  </div>
+</div>
+
 <footer>
   <div class="footer-logo">Capitaine Sousou</div>
   <div class="footer-text">
@@ -1720,75 +1793,90 @@
     const list = document.getElementById('cms-stages-list');
     if (!list || !d.stages || d.stages.length === 0) return;
     list.innerHTML = d.stages.map(s => `
-      <div class="stage-item ${s.statut === 'full' ? 'complet' : ''}">
+      <div class="stage-item ${s.statut === 'full' || s.statut === 'done' ? 'complet' : ''} ${s.statut === 'done' ? 'done' : ''}">
         <div>
           <div class="stage-name">${s.nom}</div>
           <div class="stage-placeholder">${s.date} · ${s.lieu} · ${s.duree} · ${s.places}</div>
+          ${s.prix ? `<div class="stage-prix">💶 ${s.prix} / pers.</div>` : ''}
+          ${s.description ? `<div class="stage-desc">${s.description}</div>` : ''}
         </div>
-        <span class="badge ${s.statut === 'open' ? 'badge-open' : s.statut === 'full' ? 'badge-closed' : 'badge-soon'}">
-          ${s.statut === 'open' ? 'Places dispo' : s.statut === 'full' ? 'Complet' : 'À venir'}
+        <span class="badge ${s.statut === 'open' ? 'badge-open' : s.statut === 'full' ? 'badge-closed' : s.statut === 'done' ? 'badge-done' : 'badge-soon'}">
+          ${s.statut === 'open' ? 'Places dispo' : s.statut === 'full' ? 'Complet' : s.statut === 'done' ? 'Terminé' : 'À venir'}
         </span>
       </div>`).join('');
   }).catch(() => {});
 
   // Galerie (avec légendes + vidéos YouTube)
-fetch('/_data/galerie.json').then(r => r.json()).then(d => {
-  const grid = document.getElementById('cms-galerie-grid');
-  if (!grid || !d.photos || d.photos.length === 0) return;
+  fetch('/_data/galerie.json').then(r => r.json()).then(d => {
+    const grid = document.getElementById('cms-galerie-grid');
+    if (!grid || !d.photos || d.photos.length === 0) return;
 
-  // Fonction pour extraire l'ID YouTube
-  function getYTId(url) {
-    const m = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
-    return m ? m[1] : null;
-  }
+    function getYTId(url) {
+      const m = url.match(/(?:v=|youtu\.be\/)([^&?/]+)/);
+      return m ? m[1] : null;
+    }
 
-  grid.innerHTML = d.photos.map((p, i) => {
-    const isVideo = p.video_url && p.video_url.includes('youtube');
-    const ytId = isVideo ? getYTId(p.video_url) : null;
-    const thumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : p.src;
-    const style = i === 0 ? 'grid-row:span 2;min-height:420px;border-radius:16px;' : '';
-    return `
-      <div class="galerie-item" style="${style}" ${isVideo ? `data-video-url="https://www.youtube.com/embed/${ytId}?autoplay=1"` : ''}>
-        <img src="${thumb}" alt="${p.alt}" style="width:100%;height:100%;object-fit:cover;display:block;">
-        ${isVideo ? '<div class="video-play-btn">▶</div>' : ''}
-        ${p.legende ? `<div class="galerie-legende">${p.legende}</div>` : ''}
-      </div>`;
-  }).join('');
+    grid.innerHTML = d.photos.map((p, i) => {
+      const isVideo = p.video_url && p.video_url.includes('youtube');
+      const ytId = isVideo ? getYTId(p.video_url) : null;
+      const thumb = ytId ? `https://img.youtube.com/vi/${ytId}/hqdefault.jpg` : p.src;
+      const style = i === 0 ? 'grid-row:span 2;min-height:420px;border-radius:16px;' : '';
+      return `
+        <div class="galerie-item" style="${style}" ${isVideo ? `data-video-url="https://www.youtube.com/embed/${ytId}?autoplay=1"` : ''}>
+          <img src="${thumb}" alt="${p.alt || ''}" style="width:100%;height:100%;object-fit:cover;display:block;">
+          ${isVideo ? '<div class="video-play-btn">▶</div>' : ''}
+          ${p.legende ? `<div class="galerie-legende">${p.legende}</div>` : ''}
+        </div>`;
+    }).join('');
 
-  // Ouvrir modal au clic sur vidéo
-  grid.querySelectorAll('[data-video-url]').forEach(el => {
-    el.addEventListener('click', () => {
-      document.getElementById('video-modal-iframe').src = el.dataset.videoUrl;
-      document.getElementById('video-modal').classList.add('open');
+    // Ouvrir modal au clic sur une vignette vidéo
+    grid.querySelectorAll('[data-video-url]').forEach(el => {
+      el.addEventListener('click', () => {
+        document.getElementById('video-modal-iframe').src = el.dataset.videoUrl;
+        document.getElementById('video-modal').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
     });
-  });
-}).catch(() => {});
+  }).catch(() => {});
 
-// Fermer modal vidéo
-document.getElementById('video-modal-close').addEventListener('click', () => {
-  document.getElementById('video-modal').classList.remove('open');
-  document.getElementById('video-modal-iframe').src = '';
-});
-document.getElementById('video-modal').addEventListener('click', e => {
-  if (e.target === e.currentTarget) {
-    e.currentTarget.classList.remove('open');
+  // Fermer le modal vidéo
+  document.getElementById('video-modal-close').addEventListener('click', () => {
+    document.getElementById('video-modal').classList.remove('open');
     document.getElementById('video-modal-iframe').src = '';
-  }
-});
+    document.body.style.overflow = '';
+  });
+  document.getElementById('video-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.classList.remove('open');
+      document.getElementById('video-modal-iframe').src = '';
+      document.body.style.overflow = '';
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.getElementById('video-modal').classList.remove('open');
+      document.getElementById('video-modal-iframe').src = '';
+      document.body.style.overflow = '';
+    }
+  });
 
-  // Témoignages (section cachée, visible si visible=true)
+  // Journal de bord (section cachée, visible si visible=true)
   fetch('/_data/temoignages.json').then(r => r.json()).then(d => {
     const section = document.getElementById('temoignages');
     if (!section) return;
     if (d.visible) {
       section.classList.add('visible');
-      if (d.temoignages && d.temoignages.length > 0) {
-        const grid = section.querySelector('.temoignages-grid');
-        if (grid) grid.innerHTML = d.temoignages.map(t => `
+      const grid = document.getElementById('cms-journal-grid') || section.querySelector('.temoignages-grid');
+      if (grid && d.entrees && d.entrees.length > 0) {
+        grid.innerHTML = d.entrees.map(e => `
           <div class="temoignage-card">
-            <p class="temoignage-quote">${t.texte}</p>
-            <div class="temoignage-author">${t.auteur}</div>
-            <div class="temoignage-stage">${t.stage}</div>
+            ${e.date ? `<div class="journal-date">📅 ${e.date}</div>` : ''}
+            <div class="journal-titre">${e.titre}</div>
+            <p class="journal-texte">${e.texte}</p>
+            ${e.tags && e.tags.length > 0 ? `
+              <div class="journal-tags">
+                ${e.tags.map(tag => `<span class="journal-tag">#${tag}</span>`).join('')}
+              </div>` : ''}
           </div>`).join('');
       }
     }
