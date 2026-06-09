@@ -92,15 +92,16 @@ collections:
               - { label: "Photo", name: "photo", widget: "image" }
 
       - name: "galerie"
-        label: "📸 Galerie photos"
+        label: "📸 Galerie photos & vidéos"
         file: "_data/galerie.json"
         fields:
           - name: "photos"
-            label: "Photos"
+            label: "Photos et vidéos"
             widget: "list"
-            hint: "Ajoute, supprime et réordonne les photos librement."
+            hint: "Ajoute, supprime et réordonne les médias librement. Pour une vidéo, colle l'URL YouTube dans le champ prévu."
             fields:
-              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Photo", name: "src", widget: "image", required: false, hint: "Laisse vide si c'est une vidéo." }
+              - { label: "URL vidéo YouTube (optionnel)", name: "video_url", widget: "string", required: false, hint: "Ex: https://www.youtube.com/watch?v=XXXXX — si rempli, la photo est ignorée." }
               - { label: "Description (texte alternatif)", name: "alt", widget: "string" }
               - { label: "Légende (affichée sous la photo)", name: "legende", widget: "string", required: false }
 
@@ -117,12 +118,15 @@ collections:
               - { label: "Lieu", name: "lieu", widget: "string" }
               - { label: "Durée", name: "duree", widget: "string" }
               - { label: "Nombre de places", name: "places", widget: "string" }
+              - { label: "Prix (ex: 290 €)", name: "prix", widget: "string", required: false }
+              - { label: "Description courte", name: "description", widget: "text", required: false, hint: "Quelques mots pour donner envie — 1 à 2 phrases max." }
               - label: "Statut"
                 name: "statut"
                 widget: "select"
                 options:
                   - { label: "Places disponibles", value: "open" }
                   - { label: "Complet", value: "full" }
+                  - { label: "Terminé", value: "done" }
                   - { label: "À venir", value: "soon" }
 
       - name: "contact"
@@ -133,17 +137,23 @@ collections:
           - { label: "Texte d'introduction", name: "intro", widget: "text" }
 
       - name: "temoignages"
-        label: "⭐ Témoignages"
+        label: "📓 Journal de bord"
         file: "_data/temoignages.json"
         fields:
-          - { label: "Afficher sur le site ?", name: "visible", widget: "boolean", default: false, hint: "Active cette option quand tu as des témoignages à montrer." }
-          - name: "temoignages"
-            label: "Témoignages"
+          - { label: "Afficher le journal sur le site ?", name: "visible", widget: "boolean", default: false, hint: "Active cette option pour rendre le journal visible sur le site." }
+          - name: "entrees"
+            label: "Entrées du journal"
             widget: "list"
+            hint: "Chaque entrée est un petit récit — une sortie, un moment, une anecdote. Les mots-clés aident le référencement."
             fields:
-              - { label: "Texte", name: "texte", widget: "text" }
-              - { label: "Auteur", name: "auteur", widget: "string" }
-              - { label: "Stage / contexte", name: "stage", widget: "string" }
+              - { label: "Titre", name: "titre", widget: "string", hint: "Ex: Première sortie de la saison" }
+              - { label: "Date", name: "date", widget: "string", hint: "Ex: 15 mai 2026" }
+              - { label: "Texte", name: "texte", widget: "text", hint: "Quelques lignes libres sur ce moment." }
+              - label: "Mots-clés"
+                name: "tags"
+                widget: "list"
+                field: { label: "Tag", name: "tag", widget: "string" }
+                hint: "Ex: dauphins, stage débutant, Marseille — utile pour le référencement Google."
 
       - name: "faq"
         label: "❓ FAQ"
