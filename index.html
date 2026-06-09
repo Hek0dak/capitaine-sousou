@@ -1460,23 +1460,31 @@
       </div>
 
       <div class="form">
+        <form name="contact" netlify netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p hidden><input name="bot-field"></p>
         <div class="form-title">Demande de stage ou d'information</div>
 
-        <div class="form-row">
+       <div class="form-row">
           <div class="form-group">
             <label>Prénom</label>
-            <input type="text" placeholder="Votre prénom">
+            <input type="text" name="prenom" placeholder="Votre prénom">
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" placeholder="votre@email.com">
+            <input type="email" name="email" placeholder="votre@email.com">
           </div>
+        </div>
+
+        <div class="form-group">
+          <label>Téléphone (optionnel)</label>
+          <input type="tel" name="telephone" placeholder="ex. : +33 6 12 34 56 78">
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label>Type de prestation</label>
-            <select>
+            <select name="prestation">
               <option value="" disabled selected>Choisir…</option>
               <option>Stage de voile</option>
               <option>Croisière à thème</option>
@@ -1487,7 +1495,7 @@
           </div>
           <div class="form-group">
             <label>Nombre de personnes</label>
-            <select>
+            <select name="personnes">
               <option value="" disabled selected>Choisir…</option>
               <option>1 personne</option>
               <option>2 personnes</option>
@@ -1501,21 +1509,22 @@
         <div class="form-row">
           <div class="form-group">
             <label>Zone de départ (optionnel)</label>
-            <input type="text" placeholder="ex. : Marseille, Bretagne…">
+            <input type="text" name="zone" placeholder="ex. : Marseille, Bretagne…">
           </div>
           <div class="form-group">
             <label>Date souhaitée (optionnel)</label>
-            <input type="text" placeholder="ex. : juillet 2026">
+            <input type="text" name="date" placeholder="ex. : juillet 2026">
           </div>
         </div>
 
         <div class="form-group">
           <label>Message / budget (optionnel)</label>
-          <textarea placeholder="Dites-moi ce que vous avez en tête : niveau, envies, questions…"></textarea>
+          <textarea name="message" placeholder="Dites-moi ce que vous avez en tête : niveau, envies, questions…"></textarea>
         </div>
 
-        <button class="form-submit" type="button">Envoyer ma demande ⛵</button>
+        <button class="form-submit" type="submit">Envoyer ma demande ⛵</button>
         <p class="form-note">Réponse sous 48h · Aucune obligation · Ce formulaire envoie directement à Solène</p>
+        </form>
       </div>
 
     </div>
