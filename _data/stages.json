@@ -1,12 +1,12 @@
 {
   "photo_agenda_1": {
-    "src": "",
-    "alt": "Photo agenda 1",
+    "src": "https://media.istockphoto.com/id/1412049078/fr/photo/voiliers-voiliers-de-r%C3%A9gate-avec-voiles-blanches-%C3%A0-la-mer-ouverte-vue-a%C3%A9rienne-du-voilier.jpg?s=612x612&w=0&k=20&c=SgQBavUI8j8uSAne-rUIgkLb0K3Fy5piKXwo-5lKwtU=",
+    "alt": "Une sortie en mer",
     "legende": ""
   },
   "photo_agenda_2": {
-    "src": "",
-    "alt": "Photo agenda 2",
+    "src": "https://img.freepik.com/photos-gratuite/petit-voilier-mer-entoure-montagnes-couvertes-brouillard-pendant-journee_181624-24607.jpg?semt=ais_hybrid&w=740&q=80",
+    "alt": "La voile en Med",
     "legende": ""
   },
   "stages": [
