@@ -21,6 +21,7 @@ collections:
           - { label: "Accroche", name: "eyebrow", widget: "string" }
           - { label: "Description", name: "intro", widget: "text" }
           - { label: "Photo principale", name: "photo_hero", widget: "image" }
+          - { label: "Légende photo (visible au survol)", name: "legende_hero", widget: "string", required: false, hint: "Ex : Solène à bord du Wavy, Marseille 2026" }
 
       - name: "philosophie"
         label: "🌊 Une approche qui laisse de la place"
@@ -30,6 +31,7 @@ collections:
           - { label: "Paragraphe 1", name: "texte1", widget: "text" }
           - { label: "Paragraphe 2", name: "texte2", widget: "text" }
           - { label: "Photo portrait", name: "photo", widget: "image", required: false }
+          - { label: "Légende photo (visible au survol)", name: "legende", widget: "string", required: false, hint: "Ex : Solène au départ de Marseille, été 2025" }
           - name: "chips"
             label: "Valeurs (chips colorées)"
             widget: "list"
@@ -72,24 +74,28 @@ collections:
             fields:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Légende photo (visible au survol)", name: "legende", widget: "string", required: false }
           - name: "croisieres"
             label: "Croisières à thème"
             widget: "object"
             fields:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Légende photo (visible au survol)", name: "legende", widget: "string", required: false }
           - name: "stages_pre"
             label: "Stages pré-organisés"
             widget: "object"
             fields:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Légende photo (visible au survol)", name: "legende", widget: "string", required: false }
           - name: "cours_prive"
             label: "Cours privés"
             widget: "object"
             fields:
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Légende photo (visible au survol)", name: "legende", widget: "string", required: false }
 
       - name: "galerie"
         label: "📸 Galerie photos & vidéos"
@@ -109,6 +115,22 @@ collections:
         label: "📅 Agenda des stages"
         file: "_data/stages.json"
         fields:
+          - label: "📸 Photo agenda 1"
+            name: "photo_agenda_1"
+            widget: "object"
+            hint: "Première photo affichée à droite de l'agenda."
+            fields:
+              - { label: "Photo", name: "src", widget: "image", required: false }
+              - { label: "Description (texte alternatif)", name: "alt", widget: "string", required: false }
+              - { label: "Légende (visible au survol)", name: "legende", widget: "string", required: false }
+          - label: "📸 Photo agenda 2"
+            name: "photo_agenda_2"
+            widget: "object"
+            hint: "Deuxième photo affichée à droite de l'agenda."
+            fields:
+              - { label: "Photo", name: "src", widget: "image", required: false }
+              - { label: "Description (texte alternatif)", name: "alt", widget: "string", required: false }
+              - { label: "Légende (visible au survol)", name: "legende", widget: "string", required: false }
           - name: "stages"
             label: "Prochains stages"
             widget: "list"
