@@ -6,8 +6,8 @@
       "lieu": "Marseille",
       "duree": "3 jours",
       "places": "5 places",
-      "prix": "290 €",
-      "description": "Naviguez au fil de la côte provençale en apprenant à reconnaître les espèces marines et côtières avec des passionnés d'ornithologie.",
+      "prix": "475",
+      "description": "Navigation à la voile dans les Calanques et découverte de la faune marine avec une spécialiste passionnée. ",
       "statut": "done"
     },
     {
@@ -15,9 +15,9 @@
       "date": "14 au 19 juin 2026",
       "lieu": "Marseille - Calvi",
       "duree": "6 jours",
-      "places": "COMPLET",
+      "places": "6 places",
       "prix": "690 €",
-      "description": "6 jours en mer pour rallier Calvi depuis Marseille : navigation hauturière, passages de nuit, escales magiques.",
+      "description": "6 jours en mer pour rallier Calvi depuis Marseille : navigation hauturière, quarts de nuit, escales magiques.",
       "statut": "full"
     },
     {
@@ -25,19 +25,19 @@
       "date": "27 juin au 4 juillet 2026",
       "lieu": "Hyères",
       "duree": "7 jours",
-      "places": "COMPLET",
-      "prix": "750 €",
-      "description": "En partenariat avec des biologistes marins, partez à la rencontre des dauphins et baleines de Méditerranée.",
-      "statut": "done"
+      "places": "6 places",
+      "prix": "Privatisation",
+      "description": "Séjour à la voile entre mouillages sauvages et navigation au large pour aller intuitivement à la rencontre des cétacés. ",
+      "statut": "full"
     },
     {
       "nom": "Navigation & perfectionnement",
       "date": "20 au 27 juillet 2026",
       "lieu": "Marseille - Méditerranée",
-      "duree": "7 jours",
+      "duree": "7 jours - 6 nuits",
       "places": "5 places",
-      "prix": "720 €",
-      "description": "Pour ceux qui ont déjà navigué et veulent progresser : manœuvres, météo, lecture des courants.",
+      "prix": "980€",
+      "description": "Séjour de navigation progressive et intensive dans les Calanques : spi symétrique, traversée, nav de nuit... ",
       "statut": "soon"
     },
     {
@@ -46,18 +46,18 @@
       "lieu": "Marseille - Méditerranée",
       "duree": "7 jours",
       "places": "5 places",
-      "prix": "720 €",
-      "description": "Pour ceux qui ont déjà navigué et veulent progresser : manœuvres, météo, lecture des courants.",
+      "prix": "980€",
+      "description": "Séjour de navigation progressive et intensive dans les Calanques : spi symétrique, traversée, nav de nuit... ",
       "statut": "soon"
     },
     {
       "nom": "Voile et observation de la faune marine",
       "date": "28 - 30 août 2026",
       "lieu": "Marseille",
-      "duree": "2 jours",
-      "places": "6 places",
-      "prix": "195 €",
-      "description": "Un week-end en mer pour observer poulpes, poissons et oiseaux côtiers dans les calanques.",
+      "duree": "3 jours",
+      "places": "6 à 8 places",
+      "prix": "490€",
+      "description": "Un week-end en mer pour apprendre à connaître les espèces marines qui nous entourent. ",
       "statut": "soon"
     }
   ]
