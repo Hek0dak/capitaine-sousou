@@ -6,7 +6,7 @@
       "lieu": "Marseille",
       "duree": "3 jours",
       "places": "5 places",
-      "prix": "475",
+      "prix": "475€",
       "description": "Navigation à la voile dans les Calanques et découverte de la faune marine avec une spécialiste passionnée. ",
       "statut": "done"
     },
@@ -16,7 +16,7 @@
       "lieu": "Marseille - Calvi",
       "duree": "6 jours",
       "places": "6 places",
-      "prix": "690 €",
+      "prix": "720€",
       "description": "6 jours en mer pour rallier Calvi depuis Marseille : navigation hauturière, quarts de nuit, escales magiques.",
       "statut": "full"
     },
