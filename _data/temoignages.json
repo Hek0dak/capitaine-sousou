@@ -1,15 +1,15 @@
 {
-  "visible": true,
+  "visible": false,
   "entrees": [
     {
-      "titre": "Première sortie de la saison",
-      "texte": "Le mistral soufflait fort ce matin, mais on a quand même appareillé. Les stagiaires ont adoré sentir le vent dans les voiles pour la première fois. Un groupe de dauphins nous a accompagnés jusqu'à la pointe de Riou.",
-      "date": "15 mai 2026",
+      "titre": "Stage de voile et observation des oiseaux",
+      "texte": "Un stage de voile de 3 jours, avec 5 participant·e·s enchanté·e·s. On hisse les voiles, direction les Calanques. Une navigation pendant laquelle on observe des puffins, des cormorans, et un espadon. \nAprès une première nuit au mouillage, Philomène, notre illustratrice-ornithologue propose un atelier aquarelle à bord pour dessiner les espèces rencontrées la vielle sur l'eau, ou dans l'eau. Et dans l'après-midi, quand le vent thermique se lève, nous repartons naviguer, \"sous spi\" (grande voile d'avant) vers Cassis. Une arrêt ou on observe une murène, et on entend une huppe fasciée non loin sur terre. \nLe week-end se termine en beauté par la rencontre avec des dauphins bleus et blanc, car nous avons décidé ensemble de nous lever tôt pour faire cap au large et espérer les croiser ! \nUne grande réussite 🔆",
+      "date": "Du 23 au 25 mai 2026",
       "tags": [
-        "stage débutant",
-        "dauphins",
+        "Stage de voile",
+        "Observation des oiseaux, des cétacés",
         "Marseille",
-        "printemps"
+        "Week-end en nature"
       ]
     }
   ]
