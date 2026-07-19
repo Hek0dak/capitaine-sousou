@@ -59,6 +59,16 @@
       "prix": "490€",
       "description": "Un week-end en mer pour apprendre à connaître les espèces marines qui nous entourent. ",
       "statut": "full"
+    },
+    {
+      "nom": "Votre stage personnalisé",
+      "date": "Automne-hiver 2026",
+      "lieu": "Lieu de votre choix ",
+      "duree": "1 à 7 jours",
+      "places": "4 à 8 places",
+      "prix": "A partir de 100€/jour/personne",
+      "statut": "soon",
+      "description": "Vous choisissez votre équipage, vos dates, on trouve un bateau adapté à vos besoins et à votre niveau... Contactez-moi pour l'organiser. "
     }
   ]
 }
