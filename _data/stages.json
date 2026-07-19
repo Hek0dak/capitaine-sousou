@@ -41,34 +41,24 @@
       "statut": "full"
     },
     {
-      "nom": "Navigation & perfectionnement",
-      "date": "20 au 27 juillet 2026",
+      "nom": "Navigation & perfectionnement 4 jours",
+      "date": "Du 1 au 4 août",
       "lieu": "Marseille - Méditerranée",
-      "duree": "7 jours - 6 nuits",
+      "duree": "4 jours - 3 nuits",
       "places": "5 places",
-      "prix": "980€ ",
-      "description": "Séjour de navigation progressive et intensive dans les Calanques : spi symétrique, traversée, nav de nuit... ",
-      "statut": "soon"
-    },
-    {
-      "nom": "Navigation & perfectionnement",
-      "date": "28 juillet au 2 août 2026",
-      "lieu": "Marseille - Méditerranée",
-      "duree": "7 jours",
-      "places": "4 places /5",
-      "prix": "980€ (réduc -80€) ",
-      "description": "Séjour de navigation progressive et intensive dans les Calanques : spi symétrique, traversée, nav de nuit... ",
-      "statut": "soon"
+      "prix": "560€ ",
+      "description": "Séjour de navigation progressive et intensive dans les Calanques : spi symétrique, nav de nuit... ",
+      "statut": "open"
     },
     {
       "nom": "Voile et observation de la faune marine",
       "date": "28 - 30 août 2026",
       "lieu": "Marseille",
       "duree": "3 jours",
-      "places": "6 à 8 places",
+      "places": "8 places",
       "prix": "490€",
       "description": "Un week-end en mer pour apprendre à connaître les espèces marines qui nous entourent. ",
-      "statut": "soon"
+      "statut": "full"
     }
   ]
 }
